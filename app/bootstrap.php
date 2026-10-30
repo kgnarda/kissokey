@@ -51,9 +51,26 @@ function te(string $key, array $replace = []): string
 }
 
 
+//>*>*> Detected from the running script so the site works both at a domain root and in a subfolder (e.g. localhost/kissokey/).
+function base_path(): string
+{
+    static $base = null;
+    return $base ??= rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/');
+}
+
+function url(string $path = '/'): string
+{
+    return base_path() . '/' . ltrim($path, '/');
+}
+
 function lang_path(?string $lang = null): string
 {
     return config('langs')[$lang ?? lang()]['path'];
+}
+
+function lang_url(?string $lang = null): string
+{
+    return url(lang_path($lang));
 }
 
 function absolute_url(string $path = '/'): string
@@ -64,7 +81,7 @@ function absolute_url(string $path = '/'): string
 function asset(string $path): string
 {
     $file = dirname(__DIR__) . '/assets/' . $path;
-    return '/assets/' . $path . (is_file($file) ? '?v=' . filemtime($file) : '');
+    return url('assets/' . $path) . (is_file($file) ? '?v=' . filemtime($file) : '');
 }
 
 

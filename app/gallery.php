@@ -16,7 +16,7 @@ function gallery_items(): array
         $size = @getimagesize($path);
         if (!$size) continue;
         $items[] = [
-            'src' => '/assets/gallery/' . rawurlencode($file) . '?v=' . filemtime($path),
+            'src' => url('assets/gallery/' . rawurlencode($file)) . '?v=' . filemtime($path),
             'thumb' => gallery_thumb($path, $size[0]),
             'width' => $size[0],
             'height' => $size[1],
@@ -42,7 +42,7 @@ function gallery_thumb(string $path, int $width): ?array
     $name = pathinfo($path, PATHINFO_FILENAME) . "-{$target}.webp";
     $thumb = dirname($path) . '/thumbs/' . $name;
     if ((!is_file($thumb) || filemtime($thumb) < filemtime($path)) && !gallery_render_thumb($path, $thumb, $target)) return null;
-    return ['src' => '/assets/gallery/thumbs/' . rawurlencode($name) . '?v=' . filemtime($thumb), 'width' => $target];
+    return ['src' => url('assets/gallery/thumbs/' . rawurlencode($name)) . '?v=' . filemtime($thumb), 'width' => $target];
 }
 
 //>*>*> Runs once per new or changed image; large PNG screenshots can briefly need ~4x their pixel count in memory.

@@ -7,7 +7,7 @@ require __DIR__ . '/app/bootstrap.php';
 $lang = resolve_lang($_GET['lang'] ?? null);
 if ($lang === null) {
     http_response_code(404);
-    readfile(__DIR__ . '/404.html');
+    require __DIR__ . '/404.php';
     exit;
 }
 lang($lang);
@@ -129,10 +129,10 @@ header('Content-Language: ' . $lang);
     <meta name="twitter:image" content="<?= e($ogImage) ?>">
     <meta name="twitter:image:alt" content="<?= te('meta.og_alt') ?>">
 
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="preload" href="/assets/fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" href="<?= e(url('favicon.ico')) ?>" sizes="any">
+    <link rel="apple-touch-icon" href="<?= e(url('apple-touch-icon.png')) ?>">
+    <link rel="manifest" href="<?= e(url('site.webmanifest')) ?>">
+    <link rel="preload" href="<?= e(url('assets/fonts/fredoka-latin.woff2')) ?>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="<?= e(asset('css/style.css')) ?>">
     <script type="module" src="<?= e(asset('js/main.js')) ?>"></script>
     <script type="application/ld+json"><?= json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
@@ -210,7 +210,7 @@ header('Content-Language: ' . $lang);
 
 <header class="header">
     <div class="container header__inner">
-        <a class="brand" href="<?= e(lang_path()) ?>" aria-label="<?= te('nav.home') ?>">
+        <a class="brand" href="<?= e(lang_url()) ?>" aria-label="<?= te('nav.home') ?>">
             <img class="brand__mark" src="<?= e(asset('img/logo-mark.webp')) ?>" width="44" height="44" alt="">
             <span class="brand__name" aria-hidden="true"><span class="brand__kiss">Kiss</span><span class="brand__okey">Okey</span></span>
         </a>
@@ -232,7 +232,7 @@ header('Content-Language: ' . $lang);
         <div class="header__actions">
             <div class="lang-switch" role="group" aria-label="<?= te('nav.language') ?>">
 <?php foreach (config('langs') as $code => $info): ?>
-                <a href="<?= e($info['path']) ?>" hreflang="<?= e($code) ?>" lang="<?= e($code) ?>" title="<?= e($info['name']) ?>"<?= $code === $lang ? ' aria-current="page"' : '' ?>><?= e($info['short']) ?></a>
+                <a href="<?= e(url($info['path'])) ?>" hreflang="<?= e($code) ?>" lang="<?= e($code) ?>" title="<?= e($info['name']) ?>"<?= $code === $lang ? ' aria-current="page"' : '' ?>><?= e($info['short']) ?></a>
 <?php endforeach; ?>
             </div>
             <a class="btn btn--small header__cta" href="#download"><?= te('nav.download') ?></a>
@@ -446,7 +446,7 @@ header('Content-Language: ' . $lang);
                 </div>
             </div>
 
-            <form class="form card reveal" action="/contact.php" method="post" data-contact-form data-i18n="<?= e(json_encode([
+            <form class="form card reveal" action="<?= e(url('contact.php')) ?>" method="post" data-contact-form data-i18n="<?= e(json_encode([
                 'submit' => t('contact.submit'),
                 'sending' => t('contact.sending'),
                 'error' => t('contact.status')['error'],
@@ -497,7 +497,7 @@ header('Content-Language: ' . $lang);
 
 <footer class="footer">
     <div class="container footer__inner">
-        <a class="brand" href="<?= e(lang_path()) ?>" aria-label="<?= te('nav.home') ?>">
+        <a class="brand" href="<?= e(lang_url()) ?>" aria-label="<?= te('nav.home') ?>">
             <img class="brand__mark" src="<?= e(asset('img/logo-mark.webp')) ?>" width="44" height="44" alt="" loading="lazy">
             <span class="brand__name" aria-hidden="true"><span class="brand__kiss">Kiss</span><span class="brand__okey">Okey</span></span>
         </a>
@@ -514,7 +514,7 @@ header('Content-Language: ' . $lang);
             <p>&copy; <?= date('Y') ?> KissOkey. <?= te('footer.rights') ?></p>
             <div class="lang-switch" role="group" aria-label="<?= te('footer.language') ?>">
 <?php foreach (config('langs') as $code => $info): ?>
-                <a href="<?= e($info['path']) ?>" hreflang="<?= e($code) ?>" lang="<?= e($code) ?>"<?= $code === $lang ? ' aria-current="page"' : '' ?>><?= e($info['name']) ?></a>
+                <a href="<?= e(url($info['path'])) ?>" hreflang="<?= e($code) ?>" lang="<?= e($code) ?>"<?= $code === $lang ? ' aria-current="page"' : '' ?>><?= e($info['name']) ?></a>
 <?php endforeach; ?>
             </div>
         </div>
@@ -535,7 +535,7 @@ header('Content-Language: ' . $lang);
 <?php foreach (config('langs') as $code => $info): if ($code === $lang) continue; ?>
 <aside class="lang-hint" lang="<?= e($code) ?>" data-lang-hint="<?= e($code) ?>" hidden>
     <p><?= e(t('langhint.text', [], $code)) ?></p>
-    <a class="btn btn--small" href="<?= e($info['path']) ?>" hreflang="<?= e($code) ?>"><?= e(t('langhint.action', [], $code)) ?></a>
+    <a class="btn btn--small" href="<?= e(url($info['path'])) ?>" hreflang="<?= e($code) ?>"><?= e(t('langhint.action', [], $code)) ?></a>
     <button class="icon-btn icon-btn--ghost" type="button" data-lang-hint-close aria-label="<?= e(t('langhint.dismiss', [], $code)) ?>"><svg aria-hidden="true"><use href="#i-close"/></svg></button>
 </aside>
 <?php endforeach; ?>

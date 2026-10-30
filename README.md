@@ -35,8 +35,12 @@ Tüm metinler `app/lang/tr.php` ve `app/lang/en.php` içinde. Yeni dil eklemek i
 
 ## Yerelde çalıştırma
 
-`php -S` `.htaccess` okumadığı için kök sayfa `http://localhost:8080/`, İngilizce sürüm `http://localhost:8080/index.php?lang=en` adresinden açılır:
+Site hem domain kökünde (`kissokey.com/`) hem alt klasörde (XAMPP/WAMP: `localhost/kissokey/`) çalışır; tüm linkler kurulu olduğu klasöre göre otomatik üretilir. Apache'de `AllowOverride All` açık olmalı, aksi halde `.htaccess` okunmaz ve `/en/` adresi 404 verir.
+
+Apache yerine PHP'nin kendi sunucusu da kullanılabilir. `php -S` `.htaccess` okumadığı için İngilizce sürüm `http://localhost:8080/index.php?lang=en` adresinden açılır:
 
 ```bash
 php -S localhost:8080
 ```
+
+Galeri küçük görselleri için `assets/gallery/` klasörü PHP tarafından yazılabilir olmalı; değilse site orijinal görselleri kullanır.

@@ -6,8 +6,9 @@ Options -Indexes -MultiViews
 DirectoryIndex index.php index.html
 AddDefaultCharset UTF-8
 FileETag MTime Size
-ErrorDocument 403 /404.html
-ErrorDocument 404 /404.html
+# BASE_DIR is set by the rewrite rules below: empty at a domain root, "folder/" in a subfolder install.
+ErrorDocument 403 /%{reqenv:BASE_DIR}404.php
+ErrorDocument 404 /%{reqenv:BASE_DIR}404.php
 
 <IfModule mod_mime.c>
     AddType application/manifest+json webmanifest
@@ -22,15 +23,19 @@ ErrorDocument 404 /404.html
 </IfModule>
 
 
-# Redirects and routing.
+# Redirects and routing (works at a domain root and inside a subfolder such as localhost/kissokey/).
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteBase /
 
-    # Force HTTPS (proxy/CDN aware; skipped on localhost for local development).
+    # Detect the URL path of this folder ("" at the root, "kissokey/" in a subfolder).
+    RewriteCond %{REQUEST_URI}::$0 ^/(.+/)(.*)::\2$
+    RewriteRule .* - [E=BASE_DIR:%1]
+
+    # Force HTTPS (proxy/CDN aware; skipped for localhost and .test/.local/.localhost dev domains).
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1|\[::1\])(:[0-9]+)?$ [NC]
+    RewriteCond %{HTTP_HOST} !\.(test|local|localhost)(:[0-9]+)?$ [NC]
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
     # Canonical host without www.
@@ -41,15 +46,15 @@ ErrorDocument 404 /404.html
     RewriteRule ^app(/|$) - [F,L]
     RewriteRule (^|/)\.(?!well-known(/|$)) - [F,L]
 
-    # Old-style /index.php URLs go to their clean equivalents.
-    RewriteCond %{THE_REQUEST} \s/+index\.php\?lang=([a-z]{2})[&\s] [NC]
-    RewriteRule ^index\.php$ /%1/ [R=301,L,QSD]
-    RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
-    RewriteRule ^index\.php$ / [R=301,L,QSD]
+    # Old-style index.php URLs go to their clean equivalents.
+    RewriteCond %{THE_REQUEST} \s[^\s?]*/index\.php\?lang=([a-z]{2})[&\s] [NC]
+    RewriteRule ^index\.php$ /%{ENV:BASE_DIR}%1/ [R=301,L,QSD]
+    RewriteCond %{THE_REQUEST} \s[^\s?]*/index\.php[\s?] [NC]
+    RewriteRule ^index\.php$ /%{ENV:BASE_DIR} [R=301,L,QSD]
 
     # The default language lives at the root; other languages under /xx/.
-    RewriteRule ^tr/?$ / [R=301,L]
-    RewriteRule ^([a-z]{2})$ /$1/ [R=301,L]
+    RewriteRule ^tr/?$ /%{ENV:BASE_DIR} [R=301,L]
+    RewriteRule ^([a-z]{2})$ /%{ENV:BASE_DIR}$1/ [R=301,L]
     RewriteRule ^([a-z]{2})/$ index.php?lang=$1 [QSA,L]
 </IfModule>
 
@@ -111,9 +116,6 @@ ErrorDocument 404 /404.html
     <FilesMatch "^(robots|llms)\.txt$">
         Header set X-Robots-Tag "noindex"
     </FilesMatch>
-    <Files "404.html">
-        Header set X-Robots-Tag "noindex"
-    </Files>
 </IfModule>
 
 

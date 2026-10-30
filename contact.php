@@ -9,7 +9,7 @@ header('X-Robots-Tag: noindex, nofollow');
 header('Cache-Control: no-store');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: ' . lang_path() . '#contact', true, 303);
+    header('Location: ' . lang_url() . '#contact', true, 303);
     exit;
 }
 
@@ -23,7 +23,7 @@ function respond(string $status, array $errors = []): never
         echo json_encode(['ok' => $status === 'sent', 'message' => t('contact.status')[$status], 'errors' => (object) $errors], JSON_UNESCAPED_UNICODE);
         exit;
     }
-    header('Location: ' . lang_path() . '?contact=' . $status . '#contact', true, 303);
+    header('Location: ' . lang_url() . '?contact=' . $status . '#contact', true, 303);
     exit;
 }
 
