@@ -1,0 +1,135 @@
+# KissOkey: Apache 2.4+ configuration (shared hosting friendly; every block is guarded by IfModule).
+
+
+# Core.
+Options -Indexes -MultiViews
+DirectoryIndex index.php index.html
+AddDefaultCharset UTF-8
+FileETag MTime Size
+ErrorDocument 403 /404.html
+ErrorDocument 404 /404.html
+
+<IfModule mod_mime.c>
+    AddType application/manifest+json webmanifest
+    AddType application/xml xml
+    AddType text/plain txt
+    AddType image/webp webp
+    AddType image/avif avif
+    AddType image/svg+xml svg
+    AddType image/x-icon ico
+    AddType font/woff2 woff2
+    AddCharset UTF-8 .css .js .json .webmanifest .txt .xml .svg .html
+</IfModule>
+
+
+# Redirects and routing.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Force HTTPS (proxy/CDN aware; skipped on localhost for local development).
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # Canonical host without www.
+    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+    # Never serve private folders or dotfiles (except /.well-known for SSL and app verification).
+    RewriteRule ^app(/|$) - [F,L]
+    RewriteRule (^|/)\.(?!well-known(/|$)) - [F,L]
+
+    # Old-style /index.php URLs go to their clean equivalents.
+    RewriteCond %{THE_REQUEST} \s/+index\.php\?lang=([a-z]{2})[&\s] [NC]
+    RewriteRule ^index\.php$ /%1/ [R=301,L,QSD]
+    RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+    RewriteRule ^index\.php$ / [R=301,L,QSD]
+
+    # The default language lives at the root; other languages under /xx/.
+    RewriteRule ^tr/?$ / [R=301,L]
+    RewriteRule ^([a-z]{2})$ /$1/ [R=301,L]
+    RewriteRule ^([a-z]{2})/$ index.php?lang=$1 [QSA,L]
+</IfModule>
+
+
+# Security headers.
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Permissions-Policy "accelerometer=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on'"
+    Header always unset X-Powered-By
+    Header unset X-Powered-By
+</IfModule>
+
+
+# Compression (Brotli first, gzip fallback).
+<IfModule mod_filter.c>
+    <IfModule mod_brotli.c>
+        AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml text/javascript application/javascript application/json application/manifest+json application/xml image/svg+xml image/x-icon
+    </IfModule>
+    <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml text/javascript application/javascript application/json application/manifest+json application/xml image/svg+xml image/x-icon
+    </IfModule>
+</IfModule>
+
+
+# Caching: CSS/JS are versioned with ?v=filemtime by PHP, so they can be cached for a year.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/html "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/avif "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+    ExpiresByType image/x-icon "access plus 1 month"
+    ExpiresByType application/manifest+json "access plus 1 week"
+    ExpiresByType application/xml "access plus 1 day"
+    ExpiresByType text/plain "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(php|html)$">
+        Header set Cache-Control "no-cache"
+    </FilesMatch>
+    <FilesMatch "^(robots|llms)\.txt$">
+        Header set X-Robots-Tag "noindex"
+    </FilesMatch>
+    <Files "404.html">
+        Header set X-Robots-Tag "noindex"
+    </Files>
+</IfModule>
+
+
+# Block source, config and backup files.
+<FilesMatch "(^#.*#|\.(bak|conf|config|dist|env|inc|ini|lock|log|md|orig|psd|sh|sql|sw[op]|ya?ml)|~)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^(composer\.(json|lock)|package(-lock)?\.json|captions\.json|README.*|LICENSE.*)$">
+    Require all denied
+</FilesMatch>
+
+
+# PHP hardening (only applies when PHP runs as an Apache module; PHP-FPM ignores this block).
+<IfModule mod_php.c>
+    php_flag display_errors Off
+    php_flag log_errors On
+    php_value default_charset UTF-8
+</IfModule>

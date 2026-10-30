@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'meta.title' => 'KissOkey – Online Spin the Bottle Game | Kiss or Bomb!',
+    'meta.description' => 'Spin the bottle in 2–8 player online lobbies, throw a kiss or a bomb at your match and collect points! Download KissOkey for Android and iOS.',
+    'meta.og_alt' => 'KissOkey logo: glittery lips and a blue bomb',
+    'meta.keywords' => 'spin the bottle, online spin the bottle game, KissOkey, kiss game, party game, mobile game',
+
+    'nav.label' => 'Main menu',
+    'nav.skip' => 'Skip to content',
+    'nav.how' => 'How to Play',
+    'nav.rules' => 'Scoring',
+    'nav.features' => 'Features',
+    'nav.gallery' => 'Gallery',
+    'nav.faq' => 'FAQ',
+    'nav.contact' => 'Contact',
+    'nav.download' => 'Download',
+    'nav.menu' => 'Open menu',
+    'nav.close' => 'Close menu',
+    'nav.language' => 'Language',
+    'nav.home' => 'KissOkey home',
+
+    'store.google_small' => 'GET IT ON',
+    'store.apple_small' => 'Download on the',
+    'store.google_label' => 'Get KissOkey on Google Play',
+    'store.apple_label' => 'Download KissOkey on the App Store',
+
+    'hero.eyebrow' => 'Online spin the bottle game',
+    'hero.title_html' => 'Spin the bottle,<br><span class="text-kiss">kiss</span> or <span class="text-bomb">blow up!</span>',
+    'hero.lead' => 'Join 2–8 player online lobbies, let the bottle spin and throw a kiss or a bomb at your match. Read your rival, collect points and become the star of the table!',
+    'hero.chips' => [
+        ['icon' => 'users', 'text' => '2–8 players'],
+        ['icon' => 'globe', 'text' => 'Real-time online'],
+        ['icon' => 'device', 'text' => 'Android & iOS'],
+    ],
+    'hero.logo_alt' => 'KissOkey game logo',
+
+    'how.eyebrow' => 'Play in 3 steps',
+    'how.title' => 'How to Play?',
+    'how.lead' => 'Learn the rules in seconds; the rest is a little luck and a lot of strategy!',
+    'how.steps' => [
+        ['title' => 'Join a lobby', 'text' => 'Take a seat at an online table with 2 to 8 players and size up your rivals.'],
+        ['title' => 'Spin the bottle', 'text' => 'The bottle spins in the middle of the table; when it stops, the two players it points at are matched.'],
+        ['title' => 'Kiss or bomb?', 'text' => 'Send your match a kiss or a bomb. Careful though: they are sending you something too!'],
+    ],
+
+    'rules.eyebrow' => 'Scoring',
+    'rules.title' => 'Kiss or bomb?',
+    'rules.lead' => 'Both matched players make a choice. Points are decided by the combination of the two choices:',
+    'rules.items' => [
+        'kiss-kiss' => ['combo' => ['kiss', 'kiss'], 'title' => 'Kiss + Kiss', 'text' => 'Love wins! Both players earn points.', 'tag' => 'Both win'],
+        'bomb-kiss' => ['combo' => ['bomb', 'kiss'], 'title' => 'Bomb + Kiss', 'text' => 'The bomber steals the kisser\'s points.', 'tag' => 'Points change hands'],
+        'bomb-bomb' => ['combo' => ['bomb', 'bomb'], 'title' => 'Bomb + Bomb', 'text' => 'The bombs collide; nobody wins, nobody loses.', 'tag' => 'Nothing happens'],
+    ],
+
+    'demo.label' => 'Live demo',
+    'demo.spin' => 'Spin the Bottle',
+    'demo.spinning' => 'Spinning…',
+    'demo.idle' => 'Spin the bottle and watch the rules in action!',
+    'demo.players' => ['Mia', 'Leo', 'Zoe', 'Max', 'Ava', 'Sam', 'Ivy', 'Ben'],
+    'demo.result_kk' => '{a} and {b} both sent a kiss: +1 point each!',
+    'demo.result_bk' => 'Bomb beats kiss! {a} stole {n} points and {b} is back to zero.',
+    'demo.result_bb' => 'Two bombs collided! Nothing changes for {a} and {b}.',
+    'demo.score' => '{name}: {n} points',
+
+    'features.eyebrow' => 'Why KissOkey?',
+    'features.title' => 'A new surprise every round',
+    'features.lead' => 'Simple rules, quick rounds and lots of laughs. Spin once and you will not want to stop!',
+    'features.items' => [
+        ['icon' => 'users', 'title' => '2–8 player lobbies', 'text' => 'Small table or a full house: every lobby seats 2 to 8 players.'],
+        ['icon' => 'globe', 'title' => 'Real-time online', 'text' => 'Play live with real players in online lobbies and feel every spin as it happens.'],
+        ['icon' => 'eye', 'title' => 'Bluff & strategy', 'text' => 'Kiss or bomb? Read your rival and pick the perfect moment.'],
+        ['icon' => 'bolt', 'title' => 'Quick & easy', 'text' => 'Learn the rules in seconds and jump into the fun from the very first round.'],
+    ],
+
+    'gallery.eyebrow' => 'In-game shots',
+    'gallery.title' => 'Gallery',
+    'gallery.lead' => 'Take a peek at KissOkey before you take a seat!',
+    'gallery.empty' => 'Screenshots are coming soon!',
+    'gallery.prev' => 'Previous image',
+    'gallery.next' => 'Next image',
+    'gallery.close' => 'Close',
+    'gallery.open' => 'Enlarge: {alt}',
+    'gallery.alt_prefix' => 'KissOkey screenshot',
+    'gallery.region' => 'Screenshots',
+
+    'cta.title' => 'The bottle is ready to spin. Are you?',
+    'cta.text' => 'Download KissOkey now, join your first lobby and send your first kiss (or bomb)!',
+
+    'faq.eyebrow' => 'Good to know',
+    'faq.title' => 'Frequently Asked Questions',
+    'faq.items' => [
+        ['q' => 'What is KissOkey?', 'a' => 'KissOkey is an online spin the bottle game. The bottle matches two players; matched players throw a kiss or a bomb at each other and points are awarded based on those choices.'],
+        ['q' => 'How many people can play in a lobby?', 'a' => 'Every lobby has at least 2 and at most 8 players.'],
+        ['q' => 'How are points calculated?', 'a' => 'If both players send a kiss, both earn points. If one sends a bomb and the other a kiss, the bomber takes the kisser\'s points. If both throw a bomb, nothing happens.'],
+        ['q' => 'Which devices can I play on?', 'a' => 'KissOkey runs on Android and iOS devices. You can download it from Google Play or the App Store.'],
+        ['q' => 'Do I need an internet connection?', 'a' => 'Yes. KissOkey is an online game played with real people, so an internet connection is required.'],
+    ],
+
+    'contact.eyebrow' => 'Contact',
+    'contact.title' => 'Get in touch',
+    'contact.lead' => 'Ideas, bug reports or partnerships… Send us a message and we will get back to you soon.',
+    'contact.name' => 'Your name',
+    'contact.email' => 'Your e-mail',
+    'contact.subject' => 'Subject',
+    'contact.subject_placeholder' => 'Choose a subject',
+    'contact.subjects' => [
+        'general' => 'General question',
+        'support' => 'Game support',
+        'bug' => 'Bug report',
+        'business' => 'Partnership / Press',
+    ],
+    'contact.message' => 'Your message',
+    'contact.message_placeholder' => 'Hi KissOkey team…',
+    'contact.consent' => 'I agree that my contact details are processed so my message can be answered.',
+    'contact.submit' => 'Send Message',
+    'contact.sending' => 'Sending…',
+    'contact.status' => [
+        'sent' => 'Thank you! Your message has reached us and we will reply as soon as possible.',
+        'invalid' => 'Please check the highlighted fields.',
+        'error' => 'Your message could not be sent right now. Please try again later.',
+        'rate' => 'Too many attempts. Please try again in a few minutes.',
+        'spam' => 'Your message could not be verified. Please refresh the page and try again.',
+    ],
+    'contact.errors' => [
+        'name' => 'Please enter your name (2–80 characters).',
+        'email' => 'Please enter a valid e-mail address.',
+        'subject' => 'Please choose a subject.',
+        'message' => 'Your message must be between 10 and 5000 characters.',
+        'consent' => 'Please give your consent to continue.',
+    ],
+
+    'footer.tagline' => 'Spin the bottle, kiss or blow up!',
+    'footer.rights' => 'All rights reserved.',
+    'footer.language' => 'Language',
+
+    'langhint.text' => 'This site is also available in English.',
+    'langhint.action' => 'Switch to English',
+    'langhint.dismiss' => 'Dismiss',
+];

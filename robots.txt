@@ -1,0 +1,89 @@
+# KissOkey: robots.txt
+# Website: https://kissokey.com
+# AI-friendly summary of the site: https://kissokey.com/llms.txt
+
+
+# Default rules for every crawler.
+User-agent: *
+Allow: /
+Allow: /assets/
+Disallow: /app/
+Disallow: /contact.php
+Disallow: /*?contact=
+Disallow: /*&contact=
+
+
+# Major search engines (same rules, listed explicitly).
+User-agent: Googlebot
+User-agent: Googlebot-Image
+User-agent: Bingbot
+User-agent: YandexBot
+User-agent: YandexImages
+User-agent: DuckDuckBot
+User-agent: Applebot
+User-agent: Baiduspider
+User-agent: Slurp
+User-agent: SeznamBot
+User-agent: Qwantbot
+Allow: /
+Allow: /assets/
+Disallow: /app/
+Disallow: /contact.php
+Disallow: /*?contact=
+Disallow: /*&contact=
+
+
+# AI search, assistants and LLM crawlers are welcome (see /llms.txt).
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: GoogleOther
+User-agent: Applebot-Extended
+User-agent: Amazonbot
+User-agent: meta-externalagent
+User-agent: Meta-ExternalFetcher
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: YouBot
+User-agent: CCBot
+Allow: /
+Allow: /llms.txt
+Disallow: /app/
+Disallow: /contact.php
+Disallow: /*?contact=
+Disallow: /*&contact=
+
+
+# Social previews (link cards on WhatsApp, X, Facebook, Telegram, LinkedIn, Discord, Slack).
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: Twitterbot
+User-agent: WhatsApp
+User-agent: TelegramBot
+User-agent: LinkedInBot
+User-agent: Discordbot
+User-agent: Slackbot
+User-agent: Pinterestbot
+Allow: /
+
+
+# Aggressive SEO scrapers that add server load without sending visitors.
+User-agent: MJ12bot
+User-agent: DotBot
+User-agent: BLEXBot
+User-agent: DataForSeoBot
+User-agent: serpstatbot
+User-agent: SeekportBot
+User-agent: MegaIndex.ru
+Disallow: /
+
+
+Sitemap: https://kissokey.com/sitemap.xml

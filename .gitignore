@@ -1,0 +1,4 @@
+app/storage/
+assets/gallery/thumbs/
+.DS_Store
+Thumbs.db

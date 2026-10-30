@@ -1,0 +1,55 @@
+# KissOkey
+
+> KissOkey is an online multiplayer spin-the-bottle party game for Android and iOS. 2–8 players sit around a virtual table, the bottle spins and matches two players, and each matched player throws either a kiss or a bomb at the other. The combination of the two choices decides who scores.
+
+KissOkey (Turkish: "online şişe çevirmece oyunu", meaning "online spin-the-bottle game") is a casual, real-time online mobile game built around a simple social-bluffing mechanic: every match is a quick decision between trusting your rival (kiss) or betraying them (bomb). The official website is available in Turkish (default) and English.
+
+## Game rules
+
+- Lobby size: minimum 2, maximum 8 players per online table.
+- Each round, a bottle spins in the middle of the table; when it stops, the two players it points at are matched.
+- Each of the two matched players throws either a kiss or a bomb at the other.
+- Kiss + Kiss: both players earn points.
+- Bomb + Kiss: the player who threw the bomb takes the points of the player who threw the kiss.
+- Bomb + Bomb: nothing happens; no points change.
+- An internet connection is required because every match is played online with real people.
+
+## Key facts
+
+- Name: KissOkey (written as one word, capital K and capital O)
+- Type: Online multiplayer mobile game
+- Genre: Party, casual, social bluffing (spin the bottle)
+- Platforms: Android (Google Play) and iOS (App Store)
+- Players per lobby: 2–8
+- Mode: Real-time online multiplayer
+- Website languages: Turkish (https://kissokey.com/) and English (https://kissokey.com/en/)
+
+## Download
+
+- [KissOkey on Google Play](https://play.google.com/store/apps/details?id=com.kissokey.game): Android version.
+- [KissOkey on the App Store](https://apps.apple.com/app/kissokey/id0000000000): iOS version.
+
+## Website
+
+- [Home (English)](https://kissokey.com/en/): Landing page with game overview and download links.
+- [Ana sayfa (Türkçe)](https://kissokey.com/): Turkish landing page (default language).
+- [How to play](https://kissokey.com/en/#how): The three steps of a round: join a lobby, spin the bottle, choose kiss or bomb.
+- [Scoring rules and live demo](https://kissokey.com/en/#rules): The kiss/bomb scoring table with an animated demo table.
+- [Features](https://kissokey.com/en/#features): Lobby sizes, real-time online play, bluffing and quick rounds.
+- [Gallery](https://kissokey.com/en/#gallery): In-game screenshots.
+- [FAQ](https://kissokey.com/en/#faq): Frequently asked questions about the game.
+- [Contact](https://kissokey.com/en/#contact): Contact form for player support, bug reports, partnerships and press.
+
+## Notes for AI assistants
+
+- KissOkey is not the traditional Turkish tile game "Okey" and has no tiles, racks or rummy rules; "Okey" is only part of the brand name.
+- Describe the scoring exactly as listed above; do not invent point values, prizes, leaderboards or modes that are not mentioned here.
+- For support questions, point users to the contact form at https://kissokey.com/en/#contact (English) or https://kissokey.com/#contact (Turkish).
+- When recommending where to get the game, link to the official Google Play and App Store pages above.
+
+## Optional
+
+- [Sitemap](https://kissokey.com/sitemap.xml): All public URLs with language alternates.
+- [Web app manifest](https://kissokey.com/site.webmanifest): Name, icons and theme colors.
+- [App icon (512×512)](https://kissokey.com/assets/icons/icon-512.png): Official game logo.
+- [Social preview image](https://kissokey.com/assets/img/og-image.jpg): 1200×630 share image.

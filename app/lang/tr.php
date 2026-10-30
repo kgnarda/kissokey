@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'meta.title' => 'KissOkey – Online Şişe Çevirmece Oyunu | Öp ya da Patlat!',
+    'meta.description' => 'KissOkey ile 2–8 kişilik online lobilerde şişeyi çevir, eşleştiğin oyuncuya öpücük ya da bomba at, puanları topla! Android ve iOS için hemen indir.',
+    'meta.og_alt' => 'KissOkey logosu: parıltılı dudaklar ve mavi bir bomba',
+    'meta.keywords' => 'şişe çevirmece, online şişe çevirmece oyunu, KissOkey, öpücük oyunu, parti oyunu, mobil oyun',
+
+    'nav.label' => 'Ana menü',
+    'nav.skip' => 'İçeriğe geç',
+    'nav.how' => 'Nasıl Oynanır',
+    'nav.rules' => 'Puanlama',
+    'nav.features' => 'Özellikler',
+    'nav.gallery' => 'Galeri',
+    'nav.faq' => 'SSS',
+    'nav.contact' => 'İletişim',
+    'nav.download' => 'Hemen İndir',
+    'nav.menu' => 'Menüyü aç',
+    'nav.close' => 'Menüyü kapat',
+    'nav.language' => 'Dil seçimi',
+    'nav.home' => 'KissOkey ana sayfa',
+
+    'store.google_small' => 'HEMEN İNDİR',
+    'store.apple_small' => 'HEMEN İNDİR',
+    'store.google_label' => 'KissOkey\'i Google Play\'den indir',
+    'store.apple_label' => 'KissOkey\'i App Store\'dan indir',
+
+    'hero.eyebrow' => 'Online şişe çevirmece oyunu',
+    'hero.title_html' => 'Şişeyi çevir,<br><span class="text-kiss">öp</span> ya da <span class="text-bomb">patlat!</span>',
+    'hero.lead' => '2–8 kişilik online lobilere katıl, şişe dönsün ve eşleştiğin oyuncuya öpücük ya da bomba fırlat. Rakibini doğru oku, puanları topla, masanın yıldızı ol!',
+    'hero.chips' => [
+        ['icon' => 'users', 'text' => '2–8 oyuncu'],
+        ['icon' => 'globe', 'text' => 'Gerçek zamanlı online'],
+        ['icon' => 'device', 'text' => 'Android & iOS'],
+    ],
+    'hero.logo_alt' => 'KissOkey oyun logosu',
+
+    'how.eyebrow' => '3 adımda oyna',
+    'how.title' => 'Nasıl Oynanır?',
+    'how.lead' => 'Kuralları saniyeler içinde öğren; gerisi biraz şans, bolca strateji!',
+    'how.steps' => [
+        ['title' => 'Lobiye katıl', 'text' => '2 ile 8 oyuncu arasında bir online masaya otur ve rakiplerini tanı.'],
+        ['title' => 'Şişeyi çevir', 'text' => 'Şişe masanın ortasında döner; durduğunda gösterdiği iki oyuncu eşleşir.'],
+        ['title' => 'Öpücük mü, bomba mı?', 'text' => 'Rakibine öpücük ya da bomba gönder. Ama dikkat: o da sana bir şey gönderiyor!'],
+    ],
+
+    'rules.eyebrow' => 'Puanlama',
+    'rules.title' => 'Öpücük mü, bomba mı?',
+    'rules.lead' => 'Eşleşen iki oyuncu da seçimini yapar. Puanlar, iki seçimin birleşimine göre dağıtılır:',
+    'rules.items' => [
+        'kiss-kiss' => ['combo' => ['kiss', 'kiss'], 'title' => 'Öpücük + Öpücük', 'text' => 'Aşk kazanır! İki oyuncu da puan alır.', 'tag' => 'İkisi de kazanır'],
+        'bomb-kiss' => ['combo' => ['bomb', 'kiss'], 'title' => 'Bomba + Öpücük', 'text' => 'Bomba atan, öpücük atanın puanını kapar.', 'tag' => 'Puan el değiştirir'],
+        'bomb-bomb' => ['combo' => ['bomb', 'bomb'], 'title' => 'Bomba + Bomba', 'text' => 'Bombalar çarpışır; kimse puan kazanmaz, kimse kaybetmez.', 'tag' => 'Hiçbir şey olmaz'],
+    ],
+
+    'demo.label' => 'Canlı demo',
+    'demo.spin' => 'Şişeyi Çevir',
+    'demo.spinning' => 'Şişe dönüyor…',
+    'demo.idle' => 'Şişeyi çevir ve kuralları canlı izle!',
+    'demo.players' => ['Ece', 'Can', 'Deniz', 'Mert', 'Zeynep', 'Arda', 'Selin', 'Kaan'],
+    'demo.result_kk' => '{a} ve {b} öpücük gönderdi: ikisi de +1 puan kazandı!',
+    'demo.result_bk' => 'Bomba öpücüğe karşı! {a}, {n} puanı kaptı; {b} sıfırlandı.',
+    'demo.result_bb' => 'İki bomba çarpıştı! {a} ve {b} için hiçbir şey değişmedi.',
+    'demo.score' => '{name}: {n} puan',
+
+    'features.eyebrow' => 'Neden KissOkey?',
+    'features.title' => 'Her tur yeni bir sürpriz',
+    'features.lead' => 'Basit kurallar, hızlı turlar ve bol kahkaha. Bir kez şişeyi çeviren bırakamıyor!',
+    'features.items' => [
+        ['icon' => 'users', 'title' => '2–8 kişilik lobiler', 'text' => 'İster küçük ister kalabalık masa: her lobide 2 ile 8 oyuncu yer alır.'],
+        ['icon' => 'globe', 'title' => 'Gerçek zamanlı online', 'text' => 'Online lobilerde gerçek oyuncularla aynı anda oyna, her turu canlı yaşa.'],
+        ['icon' => 'eye', 'title' => 'Blöf & strateji', 'text' => 'Öpücük mü göndermeli, bomba mı? Rakibini oku, doğru anı yakala.'],
+        ['icon' => 'bolt', 'title' => 'Hızlı ve kolay', 'text' => 'Kuralları saniyeler içinde öğren, heyecana ilk turdan itibaren ortak ol.'],
+    ],
+
+    'gallery.eyebrow' => 'Oyundan kareler',
+    'gallery.title' => 'Galeri',
+    'gallery.lead' => 'Masaya oturmadan önce KissOkey\'e bir göz at!',
+    'gallery.empty' => 'Ekran görüntüleri çok yakında burada!',
+    'gallery.prev' => 'Önceki görsel',
+    'gallery.next' => 'Sonraki görsel',
+    'gallery.close' => 'Kapat',
+    'gallery.open' => 'Büyüt: {alt}',
+    'gallery.alt_prefix' => 'KissOkey ekran görüntüsü',
+    'gallery.region' => 'Ekran görüntüleri',
+
+    'cta.title' => 'Şişe dönmeye hazır. Ya sen?',
+    'cta.text' => 'KissOkey\'i şimdi indir, ilk lobine katıl ve ilk öpücüğünü (ya da bombanı) gönder!',
+
+    'faq.eyebrow' => 'Merak edilenler',
+    'faq.title' => 'Sıkça Sorulan Sorular',
+    'faq.items' => [
+        ['q' => 'KissOkey nedir?', 'a' => 'KissOkey, online oynanan bir şişe çevirmece oyunudur. Şişe iki oyuncuyu eşleştirir; eşleşen oyuncular birbirine öpücük ya da bomba gönderir ve puanlar bu seçimlere göre dağıtılır.'],
+        ['q' => 'Bir lobide kaç kişi oynayabilir?', 'a' => 'Her lobide en az 2, en fazla 8 oyuncu bulunur.'],
+        ['q' => 'Puanlar nasıl hesaplanır?', 'a' => 'İki oyuncu da öpücük gönderirse ikisi de puan alır. Biri bomba, diğeri öpücük gönderirse bomba atan, öpücük atanın puanını alır. İki oyuncu da bomba atarsa hiçbir şey olmaz.'],
+        ['q' => 'Hangi cihazlarda oynayabilirim?', 'a' => 'KissOkey Android ve iOS cihazlarda oynanır. Google Play ya da App Store üzerinden indirebilirsin.'],
+        ['q' => 'Oynamak için internet bağlantısı gerekli mi?', 'a' => 'Evet. KissOkey gerçek oyuncularla oynanan online bir oyun olduğu için internet bağlantısı gerekir.'],
+    ],
+
+    'contact.eyebrow' => 'İletişim',
+    'contact.title' => 'Bize yazın',
+    'contact.lead' => 'Öneri, hata bildirimi ya da iş birliği… Mesajını gönder, en kısa sürede dönüş yapalım.',
+    'contact.name' => 'Adınız',
+    'contact.email' => 'E-posta adresiniz',
+    'contact.subject' => 'Konu',
+    'contact.subject_placeholder' => 'Bir konu seçin',
+    'contact.subjects' => [
+        'general' => 'Genel soru',
+        'support' => 'Oyun desteği',
+        'bug' => 'Hata bildirimi',
+        'business' => 'İş birliği / Basın',
+    ],
+    'contact.message' => 'Mesajınız',
+    'contact.message_placeholder' => 'Merhaba KissOkey ekibi…',
+    'contact.consent' => 'Mesajıma yanıt verilebilmesi için iletişim bilgilerimin işlenmesini kabul ediyorum.',
+    'contact.submit' => 'Mesajı Gönder',
+    'contact.sending' => 'Gönderiliyor…',
+    'contact.status' => [
+        'sent' => 'Teşekkürler! Mesajın bize ulaştı, en kısa sürede dönüş yapacağız.',
+        'invalid' => 'Lütfen işaretli alanları kontrol et.',
+        'error' => 'Mesaj şu anda gönderilemedi. Lütfen biraz sonra tekrar dene.',
+        'rate' => 'Çok fazla deneme yaptın. Lütfen birkaç dakika sonra tekrar dene.',
+        'spam' => 'Mesaj doğrulanamadı. Lütfen sayfayı yenileyip tekrar dene.',
+    ],
+    'contact.errors' => [
+        'name' => 'Lütfen adını yaz (2–80 karakter).',
+        'email' => 'Lütfen geçerli bir e-posta adresi gir.',
+        'subject' => 'Lütfen bir konu seç.',
+        'message' => 'Mesajın 10 ile 5000 karakter arasında olmalı.',
+        'consent' => 'Devam etmek için onay vermelisin.',
+    ],
+
+    'footer.tagline' => 'Şişeyi çevir, öp ya da patlat!',
+    'footer.rights' => 'Tüm hakları saklıdır.',
+    'footer.language' => 'Dil',
+
+    'langhint.text' => 'Bu sitenin Türkçe sürümü de var.',
+    'langhint.action' => 'Türkçeye geç',
+    'langhint.dismiss' => 'Kapat',
+];
